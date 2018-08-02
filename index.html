@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place ID Geocoder</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+    <div id="map"></div>
+   
+    <div id="vuewrapper">
+      <button v-on:click="getLocation">Shuffle</button>
+    </div>
+
+    <script src="js/main.js"></script>
+    
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApROm5N-ZR1NUw6TavOxm76FTWMVkYq3k&libraries=places&callback=initMap" async defer></script>
+  </body>
+</html>
