@@ -1,65 +1,82 @@
  // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+ // parameter when you first load the API. For example:
+ // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+ window.onload = function () {
+   document.getElementById("shuffleButton").addEventListener("click", getLocation());
+
+   var placesApiResults = document.getElementById('placesApiResults')
 
 
 
 
+   var options = {
+     enableHighAccuracy: true,
+     timeout: 5000,
+     maximumAge: 0
+   };
+
+   function success(pos) {
+     var crd = pos.coords;
+     var service = new google.maps.places.PlacesService(placesApiResults);
+     rightHere = {
+       latitude: crd.latitude,
+       longitude: crd.longitude,
+     }
+     //  console.log(`Latitude : ${crd.latitude}`);
+     //  console.log(`Longitude: ${crd.longitude}`);
+     console.log(crd.latitude, crd.longitude);
+
+     service.nearbySearch({
+       location: new google.maps.LatLng(crd.latitude, crd.longitude),
+       radius: 500,
+       type: ['restaurant']
+     }, placesApiCallback);
+   }
+
+   function error(err) {
+     console.warn(`ERROR(${err.code}): ${err.message}`);
+   }
+
+   function getLocation() {
+     navigator.geolocation.getCurrentPosition(success, error, options);
+   }
 
 
 
+   function placesApiCallback(results, status) {
+     if (status === google.maps.places.PlacesServiceStatus.OK) {
+       for (var i = 0; i < results.length; i++) {
+         console.log(results[i]);
+       }
+     }
+   }
 
-      new Vue({
-        el: '#vuewrapper'
-      },
-        methods: {
-          getLocation(){
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(showPosition);
-          } else { 
-              x.innerHTML = "Geolocation is not supported by this browser.";
-          }
-          }
-          
-        })
-      // var map;
-      // var infowindow;
+   // end window.onload
+ }
 
-      // function initMap() {
-      //   var pyrmont = {lat: -33.867, lng: 151.195};
+ // var map;
+ // var infowindow;
 
-      //   map = new google.maps.Map(document.getElementById('map'), {
-      //     center: pyrmont,
-      //     zoom: 15
-      //   });
+ // function initMap() {
+ //   var pyrmont = {lat: -33.867, lng: 151.195};
 
-      //   infowindow = new google.maps.InfoWindow();
-      //   var service = new google.maps.places.PlacesService(map);
-      //   service.nearbySearch({
-      //     location: pyrmont,
-      //     radius: 500,
-      //     type: ['store']
-      //   }, callback);
-      // }
+ //   map = new google.maps.Map(document.getElementById('map'), {
+ //     center: pyrmont,
+ //     zoom: 15
+ //   });
 
-      // function callback(results, status) {
-      //   if (status === google.maps.places.PlacesServiceStatus.OK) {
-      //     for (var i = 0; i < results.length; i++) {
-      //       createMarker(results[i]);
-      //       console.log(results[i]);
-      //     }
-      //   }
-      // }
+ //   infowindow = new google.maps.InfoWindow();
 
-      // function createMarker(place) {
-      //   var placeLoc = place.geometry.location;
-      //   var marker = new google.maps.Marker({
-      //     map: map,
-      //     position: place.geometry.location
-      //   });
+ // function createMarker(place) {
+ //   var placeLoc = place.geometry.location;
+ //   var marker = new google.maps.Marker({
+ //     map: map,
+ //     position: place.geometry.location
+ //   });
 
-      //   google.maps.event.addListener(marker, 'click', function() {
-      //     infowindow.setContent(place.name);
-      //     infowindow.open(map, this);
-      //   });
-      // }
+ //   google.maps.event.addListener(marker, 'click', function() {
+ //     infowindow.setContent(place.name);
+ //     infowindow.open(map, this);
+ //   });
+ // }

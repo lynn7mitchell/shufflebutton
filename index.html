@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Place ID Geocoder</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    
-    <div id="map"></div>
-   
-    <div id="vuewrapper">
-      <button v-on:click="getLocation">Shuffle</button>
-    </div>
 
-    <script src="js/main.js"></script>
-    
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApROm5N-ZR1NUw6TavOxm76FTWMVkYq3k&libraries=places&callback=initMap" async defer></script>
-  </body>
+<head>
+  <title>Place ID Geocoder</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApROm5N-ZR1NUw6TavOxm76FTWMVkYq3k&libraries=places"
+    async defer></script>
+  
+
+</head>
+
+<body>
+
+
+  <div id="vuewrapper">
+    <button id="shuffleButton">Shuffle</button>
+  </div>
+
+  <div id="placesApiResults">
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
 </html>
