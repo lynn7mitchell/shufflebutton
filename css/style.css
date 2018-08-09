@@ -3,3 +3,24 @@ html, body,{
     margin: 0px;
     padding: 0px;
 }
+
+body{
+    background-color: #E10303;
+    font-family: 'Chocolate Bar Demo';
+    color: #fff;
+    font-size: 20px;
+}
+
+#vuewrapper a img{
+    display: block;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+h4{
+    margin: 0;
+    padding-top: 30px;
+}
+hr{
+    width: 100%;
+}
