@@ -6,21 +6,56 @@ html, body,{
 
 body{
     background-color: #E10303;
+    background-image: url(../img/food-background.png);
+    background-position: center center;
+    background-size: cover;
     font-family: 'Chocolate Bar Demo';
     color: #fff;
     font-size: 20px;
 }
 
-#vuewrapper a img{
-    display: block;
-    margin: 0 auto;
-    padding: 30px;
+i{
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
-h4{
+#vuewrapper img{
+    display: block;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+p{
     margin: 0;
     padding-top: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.category{
+    padding-right: 50px;
 }
 hr{
     width: 100%;
+}
+.flexwrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.genre-dropdown{
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 60px;
+}
+button{
+    height: 61px;
+    width: 192px;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #E10303;
+    font-size: 20px;
+    display: block;
+    margin: 0 auto;
+    font-family: 'Chocolate Bar Demo';
+
 }

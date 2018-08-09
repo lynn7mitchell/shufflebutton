@@ -7,6 +7,9 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/style.css">
 
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- development version, includes helpful console warnings -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApROm5N-ZR1NUw6TavOxm76FTWMVkYq3k&libraries=places" async
@@ -23,11 +26,36 @@
 
 
   <div id="vuewrapper">
-    <a id="shuffleButton"><img src="img/shuffle-logo.png" alt="logo" class="logo"></a>
-    <h4>Filter (Optional)</h4>
+    <i class="material-icons">menu</i>
+    <i class="material-icons">home</i>
+    <a id="shuffleButton">
+      <img src="img/shuffle-logo.png" alt="logo" class="logo">
+    </a>
+
+    <p>Filter (Optional)</p>
     <hr>
+
+    <div class="flexwrapper">
+      <p class="category">Distance</p>
+      <p>5 MI</p>
+      <p>10 MI</p>
+      <p>15 MI</p>
+    </div>
+    <div class="flexwrapper">
+      <p class="category">Price</p>
+      <p>$</p>
+      <p>$$</p>
+      <p>$$$</p>
+      <p>$$$</p>
+    </div>
+    <div class="genre-dropdown">
+      <p class="category">genre</p>
+    </div>
+  </div>
+  <button id="shufflebutton">Shuffle!</button>
   </div>
 
+  
   <div id="placesApiResults">
 
   </div>
