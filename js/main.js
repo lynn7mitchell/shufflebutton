@@ -2,58 +2,70 @@
  // parameter when you first load the API. For example:
  // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
- window.onload = function () {
-   document.getElementById("shuffleButton").addEventListener("click", getLocation());
+ window.onload = init;
 
-   var placesApiResults = document.getElementById('placesApiResults')
+ var placesApiResults = document.getElementById('placesApiResults')
 
+ var options = {
+   enableHighAccuracy: true,
+   timeout: 5000,
+   maximumAge: 0
+ };
 
-
-
-   var options = {
-     enableHighAccuracy: true,
-     timeout: 5000,
-     maximumAge: 0
-   };
-
-   function success(pos) {
-     var crd = pos.coords;
-     var service = new google.maps.places.PlacesService(placesApiResults);
-     rightHere = {
-       latitude: crd.latitude,
-       longitude: crd.longitude,
-     }
-     //  console.log(`Latitude : ${crd.latitude}`);
-     //  console.log(`Longitude: ${crd.longitude}`);
-     console.log(crd.latitude, crd.longitude);
-
-     service.nearbySearch({
-       location: new google.maps.LatLng(crd.latitude, crd.longitude),
-       radius: 500,
-       type: ['restaurant']
-     }, placesApiCallback);
-   }
-
-   function error(err) {
-     console.warn(`ERROR(${err.code}): ${err.message}`);
-   }
-
-   function getLocation() {
-     navigator.geolocation.getCurrentPosition(success, error, options);
-   }
-
-
-
-   function placesApiCallback(results, status) {
-     if (status === google.maps.places.PlacesServiceStatus.OK) {
-       for (var i = 0; i < results.length; i++) {
-         console.log(results[i]);
-       }
-     }
-   }
-
-   // end window.onload
+ function init() {
+   console.log('window.onload');
+   document.getElementById("shuffleButton").addEventListener("click", getLocation);
+   getLocation();
  }
+
+ function success(pos) {
+   var crd = pos.coords;
+   var service = new google.maps.places.PlacesService(placesApiResults);
+   rightHere = {
+     latitude: crd.latitude,
+     longitude: crd.longitude,
+   }
+   //  console.log(`Latitude : ${crd.latitude}`);
+   //  console.log(`Longitude: ${crd.longitude}`);
+   console.log(crd.latitude, crd.longitude);
+
+   service.nearbySearch({
+     location: new google.maps.LatLng(crd.latitude, crd.longitude),
+     radius: 5000,
+     type: ['restaurant']
+   }, placesApiCallback);
+ }
+
+ function error(err) {
+   console.warn(`ERROR(${err.code}): ${err.message}`);
+ }
+
+ function getLocation() {
+   console.log('button clicked');
+   navigator.geolocation.getCurrentPosition(success, error, options);
+
+ }
+
+
+
+ function placesApiCallback(results, status) {
+   if (status === google.maps.places.PlacesServiceStatus.OK) {
+     for (var i = 0; i < results.length; i++) {
+      //  console.log(results[i]);
+     }
+     var buttonChoice = results[Math.floor(Math.random()*results.length)];
+     console.log(buttonChoice);
+     var photoURL = buttonChoice.photos[0].getUrl({'maxWidth': 100, 'maxHeight':100});
+     console.log(photoURL);
+
+
+    //  document.getElementById('result')
+
+    
+   }
+ }
+
+
 
  // var map;
  // var infowindow;

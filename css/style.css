@@ -1,10 +1,12 @@
-html, body,{
+html,
+body,
+    {
     height: 100%;
     margin: 0px;
     padding: 0px;
 }
 
-body{
+body {
     background-color: #E10303;
     background-image: url(../img/food-background.png);
     background-position: center center;
@@ -14,40 +16,45 @@ body{
     font-size: 20px;
 }
 
-i{
+i {
     padding-left: 10px;
     padding-top: 10px;
 }
 
-#vuewrapper img{
+#vuewrapper img {
     display: block;
     margin: 0 auto;
     padding-top: 10px;
     padding-bottom: 30px;
 }
 
-p{
+p {
     margin: 0;
     padding-top: 30px;
     padding-left: 5px;
     padding-right: 5px;
 }
-.category{
+
+.category {
     padding-right: 50px;
 }
-hr{
+
+hr {
     width: 100%;
 }
-.flexwrapper{
+
+.flexwrapper {
     display: flex;
     justify-content: space-between;
 }
-.genre-dropdown{
+
+.genre-dropdown {
     display: flex;
     justify-content: flex-start;
     padding-bottom: 60px;
 }
-button{
+
+#shuffleButton {
     height: 61px;
     width: 192px;
     border-radius: 20px;
@@ -57,5 +64,4 @@ button{
     display: block;
     margin: 0 auto;
     font-family: 'Chocolate Bar Demo';
-
 }
