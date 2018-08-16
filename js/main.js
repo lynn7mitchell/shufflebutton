@@ -4,7 +4,10 @@
 
  window.onload = init;
 
+
  var placesApiResults = document.getElementById('placesApiResults')
+
+
 
  var options = {
    enableHighAccuracy: true,
@@ -15,8 +18,18 @@
  function init() {
    console.log('window.onload');
    document.getElementById("shuffleButton").addEventListener("click", getLocation);
-   getLocation();
+  //  getLocation();
  }
+
+ 
+function choose(radius){
+  var distance = radius;
+  console.log(distance);
+  return distance
+}
+
+// choose();
+// console.log(choose());
 
  function success(pos) {
    var crd = pos.coords;
@@ -29,9 +42,10 @@
    //  console.log(`Longitude: ${crd.longitude}`);
    console.log(crd.latitude, crd.longitude);
 
+  
    service.nearbySearch({
      location: new google.maps.LatLng(crd.latitude, crd.longitude),
-     radius: 5000,
+     radius: 8000,
      type: ['restaurant']
    }, placesApiCallback);
  }
@@ -51,17 +65,20 @@
  function placesApiCallback(results, status) {
    if (status === google.maps.places.PlacesServiceStatus.OK) {
      for (var i = 0; i < results.length; i++) {
-      //  console.log(results[i]);
+       //  console.log(results[i]);
      }
-     var buttonChoice = results[Math.floor(Math.random()*results.length)];
+     var buttonChoice = results[Math.floor(Math.random() * results.length)];
      console.log(buttonChoice);
-     var photoURL = buttonChoice.photos[0].getUrl({'maxWidth': 100, 'maxHeight':100});
+     var photoURL = buttonChoice.photos[0].getUrl({
+       'maxWidth': 100,
+       'maxHeight': 100
+     });
      console.log(photoURL);
 
 
-    //  document.getElementById('result')
+     //  document.getElementById('result')
 
-    
+
    }
  }
 
