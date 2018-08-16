@@ -25,11 +25,11 @@
 function choose(radius){
   var distance = radius;
   console.log(distance);
-  return distance
+  return distance;
 }
 
-// choose();
-// console.log(choose());
+
+
 
  function success(pos) {
    var crd = pos.coords;
@@ -42,10 +42,11 @@ function choose(radius){
    //  console.log(`Longitude: ${crd.longitude}`);
    console.log(crd.latitude, crd.longitude);
 
+  //  choose();
   
    service.nearbySearch({
      location: new google.maps.LatLng(crd.latitude, crd.longitude),
-     radius: 8000,
+     radius: choose(),
      type: ['restaurant']
    }, placesApiCallback);
  }
