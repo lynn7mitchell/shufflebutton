@@ -14,8 +14,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApROm5N-ZR1NUw6TavOxm76FTWMVkYq3k&libraries=places" async
     defer></script>
+   <script src="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyApROm5N-ZR1NUw6TavOxm76FTWMVkYq3k"></script>
 
-
+<!-- AIzaSyApROm5N-ZR1NUw6TavOxm76FTWMVkYq3k -->
 </head>
 
 <body>
@@ -28,23 +29,25 @@
   <div id="vuewrapper">
 
     <i class="material-icons">home</i>
-    <img src="img/shuffle-logo.png" alt="logo" class="logo">
 
+    <img src="img/shuffle-logo.png" alt="logo" class="logo" id="img">
+    <div id="hide-me">
     <p>Filter (Optional)</p>
+      
     <hr>
 
     <div class="flexwrapper">
       <p class="category">Distance</p>
-      <p onclick="choose(5000)">5 MI</p>
-      <p onclick="choose(10000)">10 MI</p>
-      <p onclick="choose(15000)">15 MI</p>
+        <p data-radius="5000" id="fiveMiles">5 MI</p>
+        <p data-radius="10000" id="tenMiles">10 MI</p>
+        <p data-radius="15000" id="fifteenMiles">15 MI</p>
     </div>
     <div class="flexwrapper">
       <p class="category">Price</p>
-      <p>$</p>
-      <p>$$</p>
-      <p>$$$</p>
-      <p>$$$</p>
+        <p data-radius="1" id="oneDollarSign">$</p>
+        <p data-radius="2" id="twoDollarSign">$$</p>
+        <p data-radius="3" id="threeDollarSign">$$$</p>
+        <p data-radius="4" id="fourDollarSign">$$$</p>
     </div>
     <div class="genre-dropdown">
       <p class="category">genre</p>
@@ -53,11 +56,14 @@
   <button id="shuffleButton">Shuffle!</button>
   </div>
 
-
+  </div>
   <div id="placesApiResults">
+    </div>
 
   </div>
-
+<div id="demo">
+  
+</div>
   <script src="js/main.js"></script>
 </body>
 

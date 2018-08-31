@@ -12,24 +12,39 @@
  var options = {
    enableHighAccuracy: true,
    timeout: 5000,
-   maximumAge: 0
+   maximumAge: 0,
+   radius: 8000,
+   price: 2,
+   website: 0
  };
 
  function init() {
    console.log('window.onload');
    document.getElementById("shuffleButton").addEventListener("click", getLocation);
-  //  getLocation();
+
+   //  radius
+   document.getElementById("fiveMiles").addEventListener("click", setRadius);
+   document.getElementById("tenMiles").addEventListener("click", setRadius);
+   document.getElementById("fifteenMiles").addEventListener("click", setRadius);
+
+   // price
+   document.getElementById("oneDollarSign").addEventListener("click", setPrice);
+   document.getElementById("twoDollarSign").addEventListener("click", setPrice);
+   document.getElementById("threeDollarSign").addEventListener("click", setPrice);
+   document.getElementById("fourDollarSign").addEventListener("click", setPrice);
  }
 
- 
-function choose(radius){
-  var distance = radius;
-  console.log(distance);
-  return distance;
-}
+ function setRadius(e) {
+   console.log(e);
+   options.radius = e.srcElement.attributes[0].value;
+   console.log(e.srcElement.attributes[0].value)
+ }
 
-
-
+ function setPrice(e) {
+   console.log(e);
+   options.price = e.srcElement.attributes[0].value;
+   console.log(e.srcElement.attributes[0].value)
+ }
 
  function success(pos) {
    var crd = pos.coords;
@@ -42,13 +57,15 @@ function choose(radius){
    //  console.log(`Longitude: ${crd.longitude}`);
    console.log(crd.latitude, crd.longitude);
 
-  //  choose();
-  
+
    service.nearbySearch({
      location: new google.maps.LatLng(crd.latitude, crd.longitude),
-     radius: choose(),
-     type: ['restaurant']
+     radius: options.radius,
+     type: ['restaurant'],
+     website: options.website,
+     minprice: options.price
    }, placesApiCallback);
+   console.log(options.website)
  }
 
  function error(err) {
@@ -59,6 +76,8 @@ function choose(radius){
    console.log('button clicked');
    navigator.geolocation.getCurrentPosition(success, error, options);
 
+   var element = document.getElementById("hide-me");
+   element.classList.add("hide");
  }
 
 
@@ -75,38 +94,97 @@ function choose(radius){
        'maxHeight': 100
      });
      console.log(photoURL);
+     var myObject = JSON.stringify(buttonChoice);
+     document.getElementById("demo").innerHTML = myObject;
+
+     detailCall()
+     
+    //  logoFinder()
 
 
+     
+
+    
      //  document.getElementById('result')
 
 
    }
+
+   //  function detailCall(){
+   //   buttonChoice.place_id;
+   //  }
+
+   function detailCall() {
+     var xmlhttp = new XMLHttpRequest();
+     xmlhttp.onreadystatechange = function () {
+       if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
+         if (xmlhttp.status == 200) {
+           var responseJSON = JSON.parse(xmlhttp.responseText);
+           console.log(xmlhttp.responseText)
+           detailWebsite(responseJSON);
+         } else if (xmlhttp.status == 400) {
+           console.log('There was an error 400');
+         } else {
+           console.log('something else other than 200 was returned');
+         }
+       }
+     };
+
+     xmlhttp.open("GET", "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + buttonChoice.place_id + "&fields=name,price_level,website,formatted_phone_number&key=AIzaSyApROm5N-ZR1NUw6TavOxm76FTWMVkYq3k", true);
+     xmlhttp.send();
+     
+
+     
+   }
+
+   function detailWebsite(responseText){
+     //console.log(responseText.result.website)
+     var requestText = responseText.result.website;
+     
+     var hostname = extractHostname(requestText);
+    var imageURL = buildImageUrl(hostname);
+    updateImageSource(imageURL);
+   }
+  
+
+   function buildImageUrl(hostname){
+    return "https://logo.clearbit.com/" + hostname
+   }
+
+   function updateImageSource(imageURL){
+     document.getElementById('img').src = imageURL;
+   }
+
+
+
+
+   function extractHostname(url) {
+    console.log(url)
+    var hostname;
+    //find & remove protocol (http, ftp, etc.) and get hostname
+  
+    if (url.indexOf("//") > -1) {
+        hostname = url.split('/')[2];
+    }
+    else {
+        hostname = url.split('/')[0];
+    }
+  
+    //find & remove port number
+    hostname = hostname.split(':')[0];
+    //find & remove "?"
+    hostname = hostname.split('?')[0];
+    console.log(hostname)
+    return hostname;
+  
+  }
+  
+  
+
+
+  
+
  }
 
 
 
- // var map;
- // var infowindow;
-
- // function initMap() {
- //   var pyrmont = {lat: -33.867, lng: 151.195};
-
- //   map = new google.maps.Map(document.getElementById('map'), {
- //     center: pyrmont,
- //     zoom: 15
- //   });
-
- //   infowindow = new google.maps.InfoWindow();
-
- // function createMarker(place) {
- //   var placeLoc = place.geometry.location;
- //   var marker = new google.maps.Marker({
- //     map: map,
- //     position: place.geometry.location
- //   });
-
- //   google.maps.event.addListener(marker, 'click', function() {
- //     infowindow.setContent(place.name);
- //     infowindow.open(map, this);
- //   });
- // }

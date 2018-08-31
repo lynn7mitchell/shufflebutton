@@ -21,6 +21,11 @@ i {
     padding-top: 10px;
 }
 
+a i {
+    text-decoration: none;
+    color: #fff;
+}
+
 #vuewrapper img {
     display: block;
     margin: 0 auto;
@@ -54,6 +59,10 @@ hr {
     padding-bottom: 60px;
 }
 
+.buttonwrapper {
+    display: flex;
+}
+
 #shuffleButton {
     height: 61px;
     width: 192px;
@@ -64,4 +73,27 @@ hr {
     display: block;
     margin: 0 auto;
     font-family: 'Chocolate Bar Demo';
+}
+
+#lets-go {
+    height: 61px;
+    width: 192px;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #E10303;
+    font-size: 20px;
+    display: block;
+    margin: 0 auto;
+    font-family: 'Chocolate Bar Demo';
+}
+
+.result-image {
+    background: #fff;
+    height: 375px;
+    width: 375px;
+    display: block;
+    margin: 0 10px 20px 10px;
+}
+.hide{
+    display: hidden;
 }
