@@ -28,9 +28,10 @@
 
   <div id="vuewrapper">
 
-    <i class="material-icons">home</i>
+    <!-- <i class="material-icons">home</i> -->
 
     <img src="img/shuffle-logo.png" alt="logo" class="logo" id="img">
+    <h3 id="restaurant-name"></h3>
     <div id="hide-me">
     <p>Filter (Optional)</p>
       
@@ -38,20 +39,20 @@
 
     <div class="flexwrapper">
       <p class="category">Distance</p>
-        <p data-radius="5000" id="fiveMiles">5 MI</p>
-        <p data-radius="10000" id="tenMiles">10 MI</p>
-        <p data-radius="15000" id="fifteenMiles">15 MI</p>
+        <p data-radius="5000" id="fiveMiles" class="distance">5 MI</p>
+        <p data-radius="10000" id="tenMiles" class="distance">10 MI</p>
+        <p data-radius="15000" id="fifteenMiles" class="distance">15 MI</p>
     </div>
-    <div class="flexwrapper">
+    <div class="flexwrapper price-wrapper">
       <p class="category">Price</p>
-        <p data-radius="1" id="oneDollarSign">$</p>
-        <p data-radius="2" id="twoDollarSign">$$</p>
-        <p data-radius="3" id="threeDollarSign">$$$</p>
-        <p data-radius="4" id="fourDollarSign">$$$</p>
+        <p data-radius="1" id="oneDollarSign" class="price-button">$</p>
+        <p data-radius="2" id="twoDollarSign" class="price-button">$$</p>
+        <p data-radius="3" id="threeDollarSign" class="price-button">$$$</p>
+        <p data-radius="4" id="fourDollarSign" class="price-button">$$$</p>
     </div>
-    <div class="genre-dropdown">
+    <!-- <div class="genre-dropdown">
       <p class="category">genre</p>
-    </div>
+    </div> -->
   </div>
   <button id="shuffleButton">Shuffle!</button>
   </div>

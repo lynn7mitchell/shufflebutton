@@ -7,8 +7,19 @@
 
  var placesApiResults = document.getElementById('placesApiResults')
 
+ var distanceButtons = document.getElementsByClassName('distance');
+ var priceButtons = document.getElementsByClassName('price-button');
 
+ //console.log(distanceButtons)
 
+ for (i = 0; i < distanceButtons.length; i++){
+   distanceButtons[i].addEventListener("click", addSelectedButtonClass);   
+ }
+
+ for (i = 0; i < priceButtons.length; i++){ 
+  priceButtons[i].addEventListener("click", addSelectedPriceClass);  
+}
+ 
  var options = {
    enableHighAccuracy: true,
    timeout: 5000,
@@ -17,6 +28,19 @@
    price: 2,
    website: 0
  };
+
+ function addSelectedButtonClass(e){
+  for (i = 0; i < distanceButtons.length; i++){
+    distanceButtons[i].classList.remove('selected-button');
+  }
+  e.srcElement.classList.add('selected-button')
+ }
+ function addSelectedPriceClass(e){
+  for (i = 0; i < priceButtons.length; i++){ 
+    priceButtons[i].classList.remove('selected-price-button');
+  }
+  e.srcElement.classList.add('selected-price-button')
+ }
 
  function init() {
    console.log('window.onload');
@@ -94,11 +118,13 @@
        'maxHeight': 100
      });
      console.log(photoURL);
+     console.log(buttonChoice.name)
+     addRestaurantTitle(buttonChoice.name)
      var myObject = JSON.stringify(buttonChoice);
-     document.getElementById("demo").innerHTML = myObject;
 
      detailCall()
      
+
     //  logoFinder()
 
 
@@ -110,6 +136,10 @@
 
    }
 
+   function addRestaurantTitle(restaurant){
+     console.log(restaurant)
+    document.getElementById('restaurant-name').innerHTML = restaurant;
+   }
    //  function detailCall(){
    //   buttonChoice.place_id;
    //  }
@@ -155,7 +185,7 @@
      document.getElementById('img').src = imageURL;
    }
 
-
+   
 
 
    function extractHostname(url) {
