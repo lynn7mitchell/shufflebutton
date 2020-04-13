@@ -1,0 +1,20 @@
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #e10303;
+  background-image: url("../img/food-background.png");
+  background-position: center center;
+  background-size: cover;
+  font-family: "Chocolate Bar Demo";
+  color: #fff;
+  font-size: 20px; }
+  body img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 5vh; }
+  body .filter-wrapper {
+    display: flex;
+    justify-content: space-around; }
+
+/*# sourceMappingURL=style.css.map */
