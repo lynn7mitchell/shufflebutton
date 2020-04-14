@@ -7,8 +7,10 @@ module.exports = function (app) {
 
     const lat = req.query.lat
     const lng = req.query.lng
+    const distance = req.query.distance
+    const price = req.query.price
     console.log(lat, lng)
-    Axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&key=` + process.env.GOOGLE_PLACES_API_KEY)
+    Axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&price_level=${price}&radius=${distance}&type=restaurant&key=` + process.env.GOOGLE_PLACES_API_KEY)
       .then(response => res.send({ placeId: response.data }))
       .catch(err => {
         console.log(err)                     //Axios entire error message

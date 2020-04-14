@@ -4,23 +4,19 @@ import logo from "../img/shuffle-logo.png";
 
 export default function Homepage() {
   const [restaurants, setRestaurants] = useState({});
-  let [distance, setDistance] = useState("");
-  let [price, setPrice] = useState("");
+  const [location, setLocation] = useState({})
+  let [distance, setDistance] = useState("1500");
+  let [price, setPrice] = useState("2");
+  let [chosenRestaurant, setChosenRestaurant] = ({})
+  
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      const location = {
+      setLocation({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
-      };
+      })
       console.log(location);
-
-      Axios.get("/api/googlePlaces", {
-        params: {
-          lat: location.lat,
-          lng: location.lng,
-        },
-      }).then((res) => setRestaurants(res.data.placeId.results));
     });
   }, []);
 
@@ -33,6 +29,15 @@ export default function Homepage() {
   };
 
   const handleShuffle = (e) =>{
+    Axios.get("/api/googlePlaces", {
+      params: {
+        lat: location.lat,
+        lng: location.lng,
+        distance: distance,
+        price: price
+      },
+    }).then((res) => console.log(res.data.placeId.results));
+
 
   }
   return (
@@ -64,9 +69,11 @@ export default function Homepage() {
           $$$
         </p>
         <p data-price="4" onClick={(e) => handlePriceClick(e)}>
-          $$$
+          $$$$
         </p>
       </div>
+
+      <button onClick={(e)=>handleShuffle(e)}>Shuffle</button>
     </div>
   );
 }
