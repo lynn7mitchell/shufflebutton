@@ -36,10 +36,11 @@ export default function Homepage() {
         price: price,
       },
     }).then((res) => {
+      console.log(res.data.placeId.results)
       let newRestaurants = []
 
       for(let i = 0; i < res.data.placeId.results.length; i++){
-        if(res.data.placeId.results[i].price_level === parseInt(price)){
+        if(res.data.placeId.results[i].price_level <= parseInt(price)){
           newRestaurants.push(res.data.placeId.results[i])
           console.log(res.data.placeId.results[i])
         }
@@ -55,7 +56,7 @@ export default function Homepage() {
   return (
     <div>
       <img src={logo} />
-      <div>{chosenRestaurant.name}</div>
+      <h2 className="chosen-restaurant">{chosenRestaurant.name}</h2>
       <div className="filter-wrapper">
         <p className="category">Distance</p>
         <p data-radius="5000" onClick={(e) => handleDistanceClick(e)}>
