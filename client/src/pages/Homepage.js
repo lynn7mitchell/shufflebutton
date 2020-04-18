@@ -24,6 +24,7 @@ export default function Homepage() {
 
   const handlePriceClick = (e) => {
     setPrice(e.target.dataset.price);
+    
   };
 
   const handleShuffle = (e) => {
@@ -59,13 +60,13 @@ export default function Homepage() {
       <h2 className="chosen-restaurant">{chosenRestaurant.name}</h2>
       <div className="filter-wrapper">
         <p className="category">Distance</p>
-        <p data-radius="5000" onClick={(e) => handleDistanceClick(e)}>
+        <p data-radius="8047" onClick={(e) => handleDistanceClick(e)}>
           5 MI
         </p>
-        <p data-radius="10000" onClick={(e) => handleDistanceClick(e)}>
+        <p data-radius="16094" onClick={(e) => handleDistanceClick(e)}>
           10 MI
         </p>
-        <p data-radius="15000" onClick={(e) => handleDistanceClick(e)}>
+        <p data-radius="24140" onClick={(e) => handleDistanceClick(e)}>
           15 MI
         </p>
       </div>

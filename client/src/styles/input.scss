@@ -24,6 +24,10 @@ body {
   .filter-wrapper{
       display: flex;
       justify-content: space-around;
+
+      .selected-button{
+        border: 1px solid #fff;
+      }
   }
 
   button{
