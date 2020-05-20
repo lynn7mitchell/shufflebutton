@@ -1,8 +1,8 @@
-const app = require('express')();
+var express = require("express");
 var path = require("path")
-const http = require('http').createServer(app);
 require('dotenv').config()
 
+var app = express();
 
 // PORT
 const PORT = process.env.PORT || 3001;
@@ -33,7 +33,8 @@ if (process.env.NODE_ENV === 'production') {
 
 
 
-http.listen(PORT, function(){
-  console.log(`listening on ${PORT}`);
+// Start the server
+app.listen(PORT, function() {
+  console.log("App running on port " + PORT + "!");
 });
 
