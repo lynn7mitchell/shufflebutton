@@ -1,0 +1,50 @@
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #e10303;
+  background-image: url('../img/food-background.png');
+  background-position: center center;
+  background-size: cover;
+  font-family: "Chocolate Bar Demo";
+  color: #fff;
+  font-size: 20px;
+
+  img{
+      display: block;
+      margin: 0 auto;
+      margin-top: 5vh;
+      margin-bottom: 6vh;
+  }
+
+  .chosen-restaurant{
+    text-align: center;
+  }
+
+  .filter-wrapper{
+      display: flex;
+      justify-content: space-around;
+
+      .selected-button{
+        border: 1px solid #fff;
+      }
+  }
+
+  button{
+    font-family: "Chocolate Bar Demo";
+    display: block;
+    margin:  0 auto;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    color: #E10303;
+    font-size: 20px;
+    width: 192px;
+    height: 62px;
+    margin-top: 5vh;
+
+
+  }
+
+
+}
