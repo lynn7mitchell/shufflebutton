@@ -1,3 +1,17 @@
+/**
+ * Reset button styles.
+ * It takes a bit of work to achieve a neutral look.
+ */
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  /* show a hand cursor on hover; some argue that we
+  should keep the default arrow cursor for buttons */
+  cursor: pointer; }
+
 body {
   height: 100%;
   margin: 0px;
@@ -25,9 +39,21 @@ body {
   body .filter-wrapper {
     display: flex;
     justify-content: space-around; }
+    body .filter-wrapper .filter-button {
+      font-family: 'Chocolate Bar Demo';
+      background: none;
+      border-color: transparent;
+      font-size: 20px;
+      color: #fff;
+      width: 55px; }
+    body .filter-wrapper .filter-button:active {
+      border: solid;
+      transform: none;
+      outline: none; }
     body .filter-wrapper .selected-button {
-      border: 1px solid #fff; }
-  body button {
+      border: #fff solid 1px;
+      border-radius: 10px; }
+  body .shuffle-button {
     font-family: "Chocolate Bar Demo";
     display: block;
     margin: 0 auto;

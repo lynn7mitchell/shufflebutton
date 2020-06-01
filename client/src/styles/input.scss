@@ -1,3 +1,17 @@
+/**
+ * Reset button styles.
+ * It takes a bit of work to achieve a neutral look.
+ */
+ button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  /* show a hand cursor on hover; some argue that we
+  should keep the default arrow cursor for buttons */
+  cursor: pointer;
+}
 // Small tablets and large smartphones (landscape view)
 $screen-sm-min: 576px;
 
@@ -40,7 +54,6 @@ $screen-xl-min: 1200px;
 
 body {
   height: 100%;
- 
   margin: 0px;
   padding: 0px;
   background-color: #e10303;
@@ -72,12 +85,28 @@ body {
       display: flex;
       justify-content: space-around;
 
+      .filter-button{
+        font-family: 'Chocolate Bar Demo';
+        background: none;
+        border-color: transparent;
+        font-size: 20px;
+        color: #fff;
+        width: 55px;
+      }
+      .filter-button:active{
+        border: solid;
+        transform: none;
+        outline: none;
+      }
+
+
       .selected-button{
-        border: 1px solid #fff;
+        border: #fff solid 1px;
+        border-radius: 10px;
       }
   }
 
-  button{
+  .shuffle-button{
     font-family: "Chocolate Bar Demo";
     display: block;
     margin:  0 auto;
