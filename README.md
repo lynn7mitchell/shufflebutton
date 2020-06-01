@@ -2,7 +2,7 @@
 
   The Restaurant Shuffle button is a web app to help you decide where to eat with a push of a button
 
-  Live Link: http://restaurant-shuffle-button.herokuapp.com/  (Works but not done yet)
+  Live Link: http://restaurant-shuffle-button.herokuapp.com/
 
 ## Why Did I Make This?
 
