@@ -21,3 +21,5 @@
 - Express.js
 - Axios
 
+## What's it look like?
+![Home](./client/src/img/screenshot.PNG)
