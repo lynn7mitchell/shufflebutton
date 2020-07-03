@@ -2,6 +2,8 @@
 
   The Restaurant Shuffle button is a web app to help you decide where to eat with a push of a button
 
+  The live link currently does not work because I do not have an SSL certificate which means I cannot get the users location!
+
   Live Link: http://restaurant-shuffle-button.herokuapp.com/
 
 ## Why Did I Make This?
@@ -22,4 +24,4 @@
 - Axios
 
 ## What's it look like?
-![Home](./client/src/img/screenshot.PNG)
+![Home](./client/src/img/screenshot.png)
