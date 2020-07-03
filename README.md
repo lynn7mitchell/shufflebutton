@@ -24,4 +24,4 @@
 - Axios
 
 ## What's it look like?
-![Home](./client/src/img/screenshot.png)
+![Home | width=30](./client/src/img/screenshot.png)
